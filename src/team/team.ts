@@ -6,21 +6,15 @@ interface Player{
     surname:string,
     role:string
 }
-router.get('/', (req,res, next)=>{
+router.get('/', (req,res)=>{
     res.send(getAllTeams());
-    next();
-    return;
 })
-router.get('/:index', (req,res, next)=>{
+router.get('/:index', (req,res)=>{
     let team = req.params.index; 
     res.send({team: team, is_it_present: isTeamPresent(team)});
-    next()
-    return;
 })
-router.get('/findTeamPlayer/:name/:surname', (req,res, next)=>{
+router.get('/findTeamPlayer/:name/:surname', (req,res)=>{
     let player:Player = {name:req.params.name, surname: req.params.surname, role:"" };
-    res.send({message: getTeamByPlayer(player)});
-    next();
-    return;
+    res.send({team: getTeamByPlayer(player)});
 })
-module.exports= router;
+export = router;

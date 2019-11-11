@@ -1,6 +1,6 @@
 import express from 'express';
-let teams = require('./team/team');
-let players = require('./player/player');
+const teams = require('./team/team');
+const players = require('./player/player');
 const app = express();
 app.use('/teams', teams);
 app.use('/players', players);

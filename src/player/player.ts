@@ -11,32 +11,22 @@ router.get('/', (req,res, next)=>{
     next();
     return;
 })
-router.get('/random/', (req,res, next)=>{
+router.get('/random/', (req,res)=>{
     res.send(getRandomPlayer());
-    next();
-    return;
 })
-router.get('/random/:team', (req,res, next)=>{
+router.get('/random/:team', (req,res)=>{
     let team = Number(req.params.team);
     res.send(getRandomPlayerByTeam(team));
-    next();
-    return;
 })
-router.get('/:team', (req,res, next)=>{
+router.get('/:team', (req,res)=>{
     let team = Number(req.params.team);
     if (team >= getAllTeams().length){
         res.send({message: "There are no other teams"});
-        next();
-        return;
     }
     res.send(getPlayersByTeam(team));
-    next();
-    return;
 })
-router.get('/role/:role', (req,res, next)=>{
+router.get('/role/:role', (req,res)=>{
     let role = req.params.role;
     res.send(getPlayerByRole(role));
-    next();
-    return;
 })
-module.exports=router;
+export = router;
